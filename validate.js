@@ -17,18 +17,21 @@ function checkCandiNo() {
 }
 
 function validateForm(){
-	if(!checkSID()){
-	  alert("Invalid value for Student ID!");
-	  document.getElementById("sid").focus();
-	  return false;
-	}else{
-		if(!checkCandiNo()){
-		  alert("Invalid value for Candidate No!!");
-		  document.getElementById("candi").focus();
-		  return false;
-		}else{
-			alert("Your input data passes validation!!");
-			return true;
+	const studentId = document.getElementById("sid").value;
+	const candidateNo = document.getElementById("candi").value;
+
+	if (!/^\d{10}$/.test(studentId)) {
+        alert("Student ID must be a 10-digit number.");
+        return false;
+    }
+		if (!/^\d{10}$/.test(studentId)) {
+			alert("Student ID must be a 10-digit number.");
+			return false;
 		}
+	
+		if (candidateNo < 1 || candidateNo > 10) {
+			alert("Candidate No. must be between 1 and 10.");
+			return false;
+		}
+		return true;
 	}
-}
